@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { getCookie, setCookie } from "cookies-next";
 
 export type TodoType = {
   id: string;
@@ -12,12 +13,10 @@ export default function useCrudTodos(tabId: string) {
 
   useEffect(() => {
     const init = async () => {
-      const localStorageValue = await localStorage.getItem(
-        `todos/tab/${tabId}`
-      );
+      const localCookiesValue = await getCookie(`todos/tab/${tabId}`);
 
-      if (localStorageValue) {
-        const todos = JSON.parse(localStorageValue || "");
+      if (localCookiesValue) {
+        const todos = JSON.parse(localCookiesValue || "");
         if (todos) {
           setTodos(todos);
         }
@@ -26,8 +25,8 @@ export default function useCrudTodos(tabId: string) {
     init();
   }, [tabId]);
 
-  const updateStorage = (value: TodoType[]) => {
-    localStorage.setItem(`todos/tab/${tabId}`, JSON.stringify(value));
+  const updateCookies = (value: TodoType[]) => {
+    setCookie(`todos/tab/${tabId}`, JSON.stringify(value));
   };
 
   const updateDoneTodo = (todoId: string) => {
@@ -36,7 +35,7 @@ export default function useCrudTodos(tabId: string) {
     );
     setTodos(newTodos);
 
-    updateStorage(newTodos);
+    updateCookies(newTodos);
   };
 
   const updateTextTodo = (todoId: string, text: string) => {
@@ -45,7 +44,7 @@ export default function useCrudTodos(tabId: string) {
     );
     setTodos(newTodos);
 
-    updateStorage(newTodos);
+    updateCookies(newTodos);
   };
 
   const createTodo = (newTodo: string) => {
@@ -53,7 +52,7 @@ export default function useCrudTodos(tabId: string) {
       const newTodos = [...todos, { id: uuidv4(), text: newTodo, done: false }];
       setTodos(newTodos);
 
-      updateStorage(newTodos);
+      updateCookies(newTodos);
     }
   };
 
@@ -61,7 +60,7 @@ export default function useCrudTodos(tabId: string) {
     const newTodos = todos.filter((i) => i.id !== todoId);
     setTodos(newTodos);
 
-    updateStorage(newTodos);
+    updateCookies(newTodos);
   };
   return { todos, updateTextTodo, updateDoneTodo, createTodo, deleteTodo };
 }

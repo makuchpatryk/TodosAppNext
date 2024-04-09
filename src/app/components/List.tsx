@@ -2,6 +2,9 @@ import { Box, Divider } from "@chakra-ui/react";
 import Item from "./Item";
 import CreateForm from "./CreateForm";
 import useCrudTodos from "../hooks/useCrudTodos";
+import { memo } from "react";
+
+const CreateFormMemo = memo(CreateForm);
 
 type ListProps = {
   tabId: string;
@@ -10,7 +13,6 @@ type ListProps = {
 export default function List({ tabId }: ListProps) {
   const { todos, updateTextTodo, updateDoneTodo, createTodo, deleteTodo } =
     useCrudTodos(tabId);
-
   return (
     <>
       <Box w="500px">
@@ -28,7 +30,7 @@ export default function List({ tabId }: ListProps) {
           })}
         </div>
         <Divider my="4" />
-        <CreateForm createTodo={createTodo} />
+        <CreateFormMemo createTodo={createTodo} />
       </Box>
     </>
   );

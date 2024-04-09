@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 
-type TTab = {
+export type TTab = {
   id: string;
   title: string;
   content: string | JSX.Element | JSX.Element[];
