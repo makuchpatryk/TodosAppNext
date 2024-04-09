@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "./dist/types/**/*.ts",
-    "cypress"
+    "cypress",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }
