@@ -1,13 +1,14 @@
-import { getCookie } from "cookies-next";
 import Main from "../app/components/Main";
 import { ChakraProvider } from "@chakra-ui/react";
+import RootLayout from "src/app/components/Layout";
+import { ReactElement } from "react";
 
 export type TabType = {
   id: string;
   title: string;
 };
 
-function Page() {
+const Page = () => {
   return (
     <>
       <ChakraProvider>
@@ -15,6 +16,9 @@ function Page() {
       </ChakraProvider>
     </>
   );
-}
+};
+Page.getLayout = function getLayout(page: ReactElement) {
+  return <RootLayout>{page}</RootLayout>;
+};
 
 export default Page;

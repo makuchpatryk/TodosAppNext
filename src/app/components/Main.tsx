@@ -1,6 +1,6 @@
 "use client";
 
-import TodosTab, { TTab } from "./TodosTab";
+import TodosTab from "./TodosTab";
 
 import { Heading, Spacer } from "@chakra-ui/react";
 import useCrudTabs from "../hooks/useCrudTabs";
