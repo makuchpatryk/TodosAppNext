@@ -1,6 +1,6 @@
-import Main from "../app/components/Main";
+import Main from "../components/Main";
 import { ChakraProvider } from "@chakra-ui/react";
-import RootLayout from "src/app/components/Layout";
+import RootLayout from "src/components/Layout";
 import { ReactElement } from "react";
 
 export type TabType = {
