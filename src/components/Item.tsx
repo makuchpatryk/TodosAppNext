@@ -56,7 +56,7 @@ const Item = ({ todo, onDoneUpadate, onTextUpdate, onRemove }: ItemProps) => {
               setEditable(!editable);
             }}
           >
-            {textValue}
+            <p data-cy="todo-item">{textValue}</p>
           </Box>
         )}
       </Box>

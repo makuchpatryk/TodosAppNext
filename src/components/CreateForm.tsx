@@ -12,6 +12,7 @@ const CreateForm = ({ createTodo }: ItemProps) => {
       <Box p="4" w="100%">
         <FormControl>
           <Input
+            data-cy="text-field"
             value={newTodo}
             onChange={(e) => {
               setNewTodo(e.target.value);
@@ -27,6 +28,7 @@ const CreateForm = ({ createTodo }: ItemProps) => {
       </Box>
       <Box p="4">
         <Button
+          data-cy="button"
           onClick={() => {
             createTodo(newTodo);
             setNewTodo("");
