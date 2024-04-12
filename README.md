@@ -1,4 +1,4 @@
-# Todo App Readme
+# Todo App
 
 ## Overview:
 
